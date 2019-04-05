@@ -23,13 +23,14 @@ int main(int argc, char **argv)
                 pagein = atoi(subbuff);
             }
             if (strstr(tmp, "pgpgout")) {
-                printf("\n\n%s", tmp);
+                //printf("\n\n%s", tmp);
                 memcpy( subbuff, &tmp[7], 40);
                 subbuff[40] = '\0';
                 pageout = atoi(subbuff);
             }
         }
-        printf("Res : %.2f \t %.2f",pagein-oldvalin,pageout-oldvalout);
+        printf("Read: %.2f KB/s \t Write: %.2f KB/s\n",pagein-oldvalin,pageout-oldvalout);
+	fflush(stdout);
         oldvalin = pagein;
         oldvalout = pageout;
         if(fp!=NULL) fclose(fp);
